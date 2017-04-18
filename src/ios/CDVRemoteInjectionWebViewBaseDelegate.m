@@ -150,7 +150,9 @@
     if (lastRequestTime != NULL && [(NSDate *)requestTime isEqualToDate:lastRequestTime]) {
         if ([self isLoading]) {
             NSLog(@"Request taking too long, displaying dialog.");
-            [self displayRetryPromptWithMessage:@"The server is taking longer than expected to respond." withCancelText:@"Wait" retryable:YES];
+            // Due to a large amount of misses with the request time tracking, this is currently disabled
+            // as it appears that the users are still gaining access to the page, just without cordova integratinos
+            // [self displayRetryPromptWithMessage:@"The server is taking longer than expected to respond." withCancelText:@"Wait" retryable:YES];
             return;
         } else {
             NSLog(@"No request in progress.  Not displaying dialog.");
